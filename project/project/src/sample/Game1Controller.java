@@ -20,22 +20,26 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-
 /**
- * 21.11.2017
- * GameController
+ * 25.11.2017
+ * Game1Controller
  *
  * @author Guzel Musina (ITIS)
  * @version v1.0
  */
-public class GameController {
-
+public class Game1Controller {
     private Timeline timeline = new Timeline();
     private int startTimeSec, startTimeMin;
-    private int counter = 0;
-    private final int MAX_COUNT_OF_RIGHT_NUMBERS = 5;
 
+    public int getCounter() {
+        return counter;
+    }
+
+    private int counter = 0;
     private String a = "BLACK";
+
+    @FXML
+    private Label rightAnswers;
     @FXML
     private Button yesButton;
     @FXML
@@ -47,64 +51,34 @@ public class GameController {
     @FXML
     private Button startButtonForTimer;
     @FXML
-    private Label rightAnswers;
-
-    public void timeStart(){
-        if(!timeline.getStatus().equals("paused")){
-            startTimeSec = 30;
-            timeline.setCycleCount(Timeline.INDEFINITE);
-            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    startTimeSec--;
-                    boolean timeToChangeBackground = startTimeSec == 0 && startTimeMin==0;
-
-                    if (timeToChangeBackground) {
-                        timeline.stop();
-                        startTimeSec = 0;
-                        startTimeMin=0;
-                        timerText.setTextFill(Color.RED);
-                    }
-                    timerText.setText(String.format("%d:%02d", startTimeMin, startTimeSec));
-                }
-            }));
-            timeline.playFromStart();
-        }else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION ,  "You have not entered a time!");
-            alert.showAndWait();
-        }
-    }
+    private Button nextButton;
 
     @FXML
     public void initialize() {
         //пишем что будет, если нажать yes/no
         //пример с текстом и цветом
         rightAnswers.setText(String.valueOf(counter));
-            yesButton.setOnAction(event1 -> {
-                colourText.setText(a);
-                colourText.setFill(Color.RED);
-                //нужно наложить условие правильно или нет
-                    counter++;
-                    rightAnswers.setText(String.valueOf(counter));
-                    endGame();
-            });
-
-        noButton.setOnAction(event2 -> {
-            colourText.setText("BLUE");
-            colourText.setFill(Color.BISQUE);
+        yesButton.setOnAction(event1 -> {
+            colourText.setText(a);
+            colourText.setFill(Color.RED);
             //нужно наложить условие правильно или нет
             counter++;
             rightAnswers.setText(String.valueOf(counter));
-            endGame();
+        });
+
+        noButton.setOnAction(event2 -> {
+            colourText.setText("BLUE");
+            colourText.setFill(Color.DARKBLUE);
+            //нужно наложить условие правильно или нет
+            counter++;
+            rightAnswers.setText(String.valueOf(counter));
 
         });
-        startButtonForTimer.setOnAction(event3 ->{
+        startButtonForTimer.setOnAction(event3 -> {
             timeStart();
-        } );
-    }
+        });
 
-    public void endGame(){
-        if(counter == MAX_COUNT_OF_RIGHT_NUMBERS ){
+        nextButton.setOnAction(event4 ->{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/endOfGame.fxml"));
             Parent root1 = null;
             try {
@@ -113,11 +87,42 @@ public class GameController {
                 throw new IllegalArgumentException(e);
             }
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initStyle(StageStyle.DECORATED);
-            stage.setTitle("EndOfGame");
+            stage.setTitle("End");
             stage.setScene(new Scene(root1));
             stage.show();
+            stage = (Stage)nextButton.getScene().getWindow();
+            stage.close();
+
+        } );
+    }
+
+
+    public void timeStart() {
+        if (!timeline.getStatus().equals("paused")) {
+            startTimeSec = 30;
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    startTimeSec--;
+                    boolean timeToChangeBackground = startTimeSec == 0 && startTimeMin == 0;
+
+                    if (timeToChangeBackground) {
+                        timeline.stop();
+                        startTimeSec = 0;
+                        startTimeMin = 0;
+                        timerText.setTextFill(Color.RED);
+                    }
+                    timerText.setText(String.format("%d:%02d", startTimeMin, startTimeSec));
+                }
+            }));
+            timeline.playFromStart();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have not entered a time!");
+            alert.showAndWait();
         }
     }
 }

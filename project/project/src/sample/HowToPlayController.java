@@ -26,7 +26,7 @@ public class HowToPlayController {
    @FXML
    public void initialize(){
        startButton.setOnAction(event1 -> {
-           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/game.fxml"));
+           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/game1.fxml"));
            Parent root1 = null;
            try {
                root1 = (Parent) fxmlLoader.load();

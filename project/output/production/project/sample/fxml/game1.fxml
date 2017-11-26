@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Game1Controller">
+    <children>
+        <AnchorPane prefHeight="750.0" prefWidth="500.0" style="-fx-background-image: url('file:/C:/Users/Guzel/Desktop/logical_game_project/project/project/src/sample/sourseJPG/game.jpg');             -fx-background-size: stretch" GridPane.columnIndex="1">
+         <children>
+            <Label fx:id="rightAnswers" layoutX="330.0" layoutY="515.0" prefHeight="67.0" prefWidth="49.0" textFill="#006666">
+               <font>
+                  <Font name="Freestyle Script" size="48.0" />
+               </font>
+            </Label>
+            <Button fx:id="yesButton" layoutX="50.0" layoutY="288.0" mnemonicParsing="false" opacity="0.0" prefHeight="186.0" prefWidth="167.0" />
+            <Button fx:id="noButton" layoutX="281.0" layoutY="288.0" mnemonicParsing="false" opacity="0.0" prefHeight="186.0" prefWidth="167.0" />
+            <Label layoutX="330.0" layoutY="515.0" opacity="0.0" prefHeight="67.0" prefWidth="49.0" text="00" textFill="#006666">
+               <font>
+                  <Font name="Freestyle Script" size="48.0" />
+               </font>
+            </Label>
+            <Text fx:id="colourText" layoutX="110.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="279.205078125">
+               <font>
+                  <Font name="Century Gothic" size="72.0" />
+               </font>
+            </Text>
+            <Label fx:id="timerText" layoutX="201.0" layoutY="51.0" text="START" textFill="#006666">
+               <font>
+                  <Font name="Century Gothic" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="startButtonForTimer" layoutX="201.0" layoutY="55.0" mnemonicParsing="false" opacity="0.0" prefHeight="46.0" prefWidth="98.0" text="Button" />
+            <Button fx:id="nextButton" layoutX="326.0" layoutY="582.0" mnemonicParsing="false" opacity="0.64" text="Next" textFill="#006666">
+               <font>
+                  <Font name="Freestyle Script" size="24.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+    </children>
+</AnchorPane>
