@@ -1,5 +1,9 @@
 package sample;
 
+import entities.media.DataReader;
+import entities.media.DataReaderException;
+import entities.media.DataReaderFactory;
+import entities.media.MediaPlayer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +14,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 /**
  * 21.11.2017
@@ -20,22 +26,31 @@ import java.io.IOException;
  * @version v1.0
  */
 public class SettingsController {
-    private Stage window;
     @FXML
-    private CheckBox musicOn;
+    private Button musicOn;
     @FXML
-    private CheckBox musicOff;
+    private Button musicOff;
     @FXML
     private Button backToMenu;
 
     @FXML
     public void initialize() {
-        //тут действия с музыкой, вместо setText пишем код
+        MediaPlayer mediaPlayer = MediaPlayer.getInstance();
         musicOn.setOnAction(event1 -> {
-            musicOn.setText("");
+            try {
+                File f = new File("C:\\Users\\Guzel\\Desktop\\logical_game_project\\project\\project\\src\\data\\music.wav");
+                URI path = f.toURI();
+                DataReader dataReader = DataReaderFactory.getProduct();
+                mediaPlayer.setTrack(dataReader.read(path));
+
+                mediaPlayer.play();
+            }
+            catch (DataReaderException ex){
+                getErrorInfo(ex, "Ошибка в DataReader");
+            }
         });
         musicOff.setOnAction(event2 -> {
-            musicOff.setText("");
+            mediaPlayer.stop();
         });
         backToMenu.setOnAction(event3 -> {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/menu.fxml"));
@@ -55,5 +70,10 @@ public class SettingsController {
             stage = (Stage)backToMenu.getScene().getWindow();
             stage.close();
         });
+    }
+    public static void getErrorInfo(Exception ex, String msg) {
+        System.out.print(msg);
+        System.err.println(ex.getMessage());
+        System.exit(1);
     }
 }

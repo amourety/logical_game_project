@@ -1,7 +1,9 @@
 package sample;
 
+import entities.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,6 +32,12 @@ import java.io.IOException;
 public class Game1Controller {
     private Timeline timeline = new Timeline();
     private int startTimeSec, startTimeMin;
+    private Player p = new Player("Vadim");
+    private Randomizer r = new Randomizer();
+    private UnitData unitData = new UnitData();
+    private Unit correctUnit;
+
+
 
     public int getCounter() {
         return counter;
@@ -52,30 +60,33 @@ public class Game1Controller {
     private Button startButtonForTimer;
     @FXML
     private Button nextButton;
-
     @FXML
     public void initialize() {
-        //пишем что будет, если нажать yes/no
-        //пример с текстом и цветом
-        rightAnswers.setText(String.valueOf(counter));
+        rightAnswers.setText(String.valueOf(p.getScore()));
         yesButton.setOnAction(event1 -> {
-            colourText.setText(a);
-            colourText.setFill(Color.RED);
-            //нужно наложить условие правильно или нет
-            counter++;
-            rightAnswers.setText(String.valueOf(counter));
+            if(correctUnit.getPure() == 1) {
+                p.addScore();
+            }
+            rightAnswers.setText(String.valueOf(p.getScore()));
+            correctUnit = r.random(unitData.getUnits());
+            colourText.setText(correctUnit.getColorName());
+            colourText.setFill(Color.valueOf(correctUnit.getRgb()));
         });
 
         noButton.setOnAction(event2 -> {
-            colourText.setText("BLUE");
-            colourText.setFill(Color.DARKBLUE);
-            //нужно наложить условие правильно или нет
-            counter++;
-            rightAnswers.setText(String.valueOf(counter));
-
+            if(correctUnit.getPure() == 0) {
+                p.addScore();
+            }
+            rightAnswers.setText(String.valueOf(p.getScore()));
+            correctUnit = r.random(unitData.getUnits());
+            colourText.setText(correctUnit.getColorName());
+            colourText.setFill(Color.valueOf(correctUnit.getRgb()));
         });
         startButtonForTimer.setOnAction(event3 -> {
             timeStart();
+            correctUnit = r.random(unitData.getUnits());
+            colourText.setText(correctUnit.getColorName());
+            colourText.setFill(Color.valueOf(correctUnit.getRgb()));
         });
 
         nextButton.setOnAction(event4 ->{
@@ -115,6 +126,19 @@ public class Game1Controller {
                         startTimeSec = 0;
                         startTimeMin = 0;
                         timerText.setTextFill(Color.RED);
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/endOfGame.fxml"));
+                        Parent root1 = null;
+                        try {
+                            root1 = (Parent) fxmlLoader.load();
+                        } catch (IOException e) {
+                            throw new IllegalArgumentException(e);
+                        }
+                        Stage stage = new Stage();
+                        stage.initModality(Modality.WINDOW_MODAL);
+                        stage.initStyle(StageStyle.DECORATED);
+                        stage.setTitle("Game");
+                        stage.setScene(new Scene(root1));
+                        stage.show();
                     }
                     timerText.setText(String.format("%d:%02d", startTimeMin, startTimeSec));
                 }
@@ -124,5 +148,8 @@ public class Game1Controller {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have not entered a time!");
             alert.showAndWait();
         }
+    }
+    public int getAmswers(){
+        return p.getScore();
     }
 }

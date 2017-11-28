@@ -15,6 +15,7 @@
          <children>
             <Button fx:id="exitButton" layoutX="197.0" layoutY="178.0" mnemonicParsing="false" opacity="0.0" prefHeight="65.0" prefWidth="106.0" text="Exit" />
             <Button fx:id="playAgainButton" layoutX="141.0" layoutY="283.0" mnemonicParsing="false" opacity="0.0" prefHeight="81.0" prefWidth="219.0" text="Button" />
+            <Label fx:id="rightAnswers" layoutX="176.0" layoutY="60.0" prefHeight="65.0" prefWidth="82.0" text="Label" />
          </children></AnchorPane>
     </children>
 

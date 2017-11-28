@@ -1,5 +1,6 @@
 package sample;
 
+import entities.Player;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,10 +26,13 @@ import java.util.Scanner;
  */
 public class EndOfGameController {
 
+ Game1Controller game1Controller = new Game1Controller();
     @FXML
     private Button exitButton;
     @FXML
     private Button playAgainButton;
+    @FXML
+    private Label rightAnswers;
 
     @FXML
     public void initialize() {
@@ -51,7 +55,7 @@ public class EndOfGameController {
         });
 
         playAgainButton.setOnAction(event2 -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/game.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/game1.fxml"));
             Parent root1 = null;
             try {
                 root1 = (Parent) fxmlLoader.load();
@@ -67,5 +71,6 @@ public class EndOfGameController {
             stage = (Stage) playAgainButton.getScene().getWindow();
             stage.close();
         });
+        rightAnswers.setText(String.valueOf(game1Controller.getCounter()));
     }
 }
