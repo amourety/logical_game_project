@@ -13,24 +13,8 @@
     <children>
         <AnchorPane prefHeight="750.0" prefWidth="500.0" style="-fx-background-image: url('file:/C:/Users/Guzel/Desktop/logical_game_project/project/project/src/sample/sourseJPG/endOfGame.jpg');         -fx-background-size: stretch" GridPane.columnIndex="1">
          <children>
-            <Button fx:id="exitButton" layoutX="201.0" layoutY="418.0" mnemonicParsing="false" opacity="0.0" prefHeight="65.0" prefWidth="106.0" text="Exit" />
-            <Button fx:id="playAgainButton" layoutX="145.0" layoutY="513.0" mnemonicParsing="false" opacity="0.0" prefHeight="81.0" prefWidth="219.0" text="Button" />
-            <TextField fx:id="nameTextField" layoutX="81.0" layoutY="72.0" prefHeight="81.0" prefWidth="339.0" promptText="Write your name please">
-               <font>
-                  <Font name="Freestyle Script" size="36.0" />
-               </font>
-            </TextField>
-            <TableView fx:id="tableView" editable="true" layoutX="81.0" layoutY="229.0" prefHeight="183.0" prefWidth="339.0" tableMenuButtonVisible="true">
-              <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="223.0" text="Name" />
-                  <TableColumn fx:id="resultsColumn" minWidth="0.0" prefWidth="115.0" text="Result" />
-              </columns>
-            </TableView>
-            <Button fx:id="addResultButton" layoutX="374.0" layoutY="153.0" mnemonicParsing="false" opacity="0.48" text="addResult" textFill="#006666">
-               <font>
-                  <Font name="Freestyle Script" size="24.0" />
-               </font>
-            </Button>
+            <Button fx:id="exitButton" layoutX="197.0" layoutY="178.0" mnemonicParsing="false" opacity="0.0" prefHeight="65.0" prefWidth="106.0" text="Exit" />
+            <Button fx:id="playAgainButton" layoutX="141.0" layoutY="283.0" mnemonicParsing="false" opacity="0.0" prefHeight="81.0" prefWidth="219.0" text="Button" />
          </children></AnchorPane>
     </children>
 

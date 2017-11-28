@@ -25,24 +25,10 @@ import java.util.Scanner;
  */
 public class EndOfGameController {
 
-    private Game1Controller game1Controller = new Game1Controller();
-    private ObservableList<User> usersData = FXCollections.observableArrayList();
     @FXML
     private Button exitButton;
     @FXML
     private Button playAgainButton;
-    @FXML
-    private TextField nameTextField;
-    @FXML
-    private TableView<User> tableView;
-    @FXML
-    private TableColumn<User, String> nameColumn;
-    @FXML
-    private TableColumn<User, Integer> resultsColumn;
-    @FXML
-    private Button addResultButton;
-
-    private String name;
 
     @FXML
     public void initialize() {
@@ -81,19 +67,5 @@ public class EndOfGameController {
             stage = (Stage) playAgainButton.getScene().getWindow();
             stage.close();
         });
-        nameTextField.setOnAction(event3 -> {
-            name = nameTextField.getText();
-        });
-
-        addResultButton.setOnAction(event4 -> {
-            initData();
-            nameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
-            resultsColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("results"));
-            tableView.setItems(usersData);
-        });
-    }
-
-    private void initData() {
-        usersData.add(new User(name, game1Controller.getCounter()));
     }
 }
