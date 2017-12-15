@@ -13,25 +13,10 @@ public class Unit {
     public int getPure() {
         return pure;
     }
-
-    public void setPure(int pure) {
-        this.pure = pure;
-    }
-
-
     public String getColorName() {
         return colorName;
     }
-
-    public void setColorName(String colorName) {
-        this.colorName = colorName;
-    }
-
     public String getRgb() {
         return rgb;
-    }
-
-    public void setRgb(String rgb) {
-        this.rgb = rgb;
     }
 }

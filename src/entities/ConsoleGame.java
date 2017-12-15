@@ -1,22 +1,13 @@
 package entities;
-import entities.media.*;
 
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class ConsoleGame {
-    public static void main(String[] args) {
+class ConsoleGame {
+    /* public static void main(String[] args) {
         try {
-            File f = new File("C:\\Users\\1\\Desktop\\JavaProjects\\logical_game_project\\src\\data\\music.wav");
+            File f = new File("C:\\Users\\Guzel\\Desktop\\logical_game_project\\project\\project\\src\\data\\music.wav");
             URI path = f.toURI();
             DataReader dataReader = DataReaderFactory.getProduct();
             MediaPlayer mediaPlayer = MediaPlayer.getInstance();
             mediaPlayer.setTrack(dataReader.read(path));
-
             mediaPlayer.play();
         }
         catch (DataReaderException ex){
@@ -84,5 +75,5 @@ public class ConsoleGame {
         System.err.println(ex.getMessage());
         System.exit(1);
     }
-
+*/
 }

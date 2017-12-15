@@ -10,7 +10,7 @@ import java.net.URI;
 public class LocalDriveDataReader implements DataReader {
 
     @Override
-    public File read(URI uri) throws DataReaderException {
+    public File read(URI uri) {
         return new File(uri);
     }
 }

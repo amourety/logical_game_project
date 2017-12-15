@@ -11,11 +11,8 @@ public class MediaPlayer {
     private Clip clip;
     private int framePosition;
     private static MediaPlayer instance = null;
-
     private MediaPlayer() {
-
     }
-
     public static MediaPlayer getInstance() {
         if (instance == null)
             instance = new MediaPlayer();
@@ -38,16 +35,6 @@ public class MediaPlayer {
         framePosition = clip.getFramePosition();
         clip.stop();
     }
-
-    public void resume() {
-        clip.setFramePosition(framePosition);
-        clip.start();
-    }
-
-    public void close() {
-        clip.close();
-    }
-
     public void setTrack(File soundFile) {
         try {
             ais = AudioSystem.getAudioInputStream(soundFile);

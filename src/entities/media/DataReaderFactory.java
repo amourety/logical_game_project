@@ -5,8 +5,7 @@ package entities.media;
  */
     public class DataReaderFactory{
         public static DataReader getProduct() {
-            DataReader dataReader = new LocalDriveDataReader();
-            return dataReader;
+            return new LocalDriveDataReader();
         }
     }
 

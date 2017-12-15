@@ -8,5 +8,5 @@ import java.io.File;
 import java.net.URI;
 
 public interface DataReader {
-    public File read(URI uri) throws DataReaderException;
+    File read(URI uri);
 }
