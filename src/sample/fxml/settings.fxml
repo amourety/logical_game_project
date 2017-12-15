@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+
+<AnchorPane prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SettingsController">
+    <children>
+        <AnchorPane prefHeight="750.0" prefWidth="500.0" style="-fx-background-image: url('file:/C:/Users/1/Desktop/JavaProjects/logical_game_project/src/sample/sourseJPG/settings.jpg'); -fx-background-size: stretch" GridPane.columnIndex="1">
+            <children>
+                <Button fx:id="backToMenu" layoutX="172.0" layoutY="542.0" mnemonicParsing="false" opacity="0.0" prefHeight="96.0" prefWidth="162.0" text="BackToMenu" />
+            <Button fx:id="musicOn" layoutX="250.0" layoutY="296.0" mnemonicParsing="false" opacity="0.0" prefHeight="84.0" prefWidth="85.0" text="Button" />
+            <Button fx:id="musicOff" layoutX="335.0" layoutY="293.0" mnemonicParsing="false" opacity="0.0" prefHeight="84.0" prefWidth="109.0" text="Button" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
